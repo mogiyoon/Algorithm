@@ -91,6 +91,20 @@ void RBT_InsertNodeHelper(RBTNode** Tree, RBTNode* NewNode)
     }
 }
 
+
+//        C
+//    B        D (k2)
+//A (k1)
+//왼쪽에 자식 A, 부모 B, 조부모 C, 오른쪽에 삼촌 D가 있다고 할 때
+//왼쪽 검정 노드수를 k1, 오른쪽 검정 노드수를 k2라고 하자
+//B와 C의 색에 따라 k1, k2의 값이 변한다.
+//오른쪽 회전 기준
+//B의 색은 k2에 영향을 주고, C의 색은 k1에 영향을 준다.
+//빨간색이면 그대로이다. (ex. B가 빨간색이면 k2는 그대로, C가 빨간색이면 k1은 그대로)
+//B가 검정이면 k2 = k2 + 1
+//C가 검정이면 k1 = k1 - 1
+
+
 void RBT_RotateRight(RBTNode** Root, RBTNode* Parent)
 {
     RBTNode* LeftChild = Parent->Left;
